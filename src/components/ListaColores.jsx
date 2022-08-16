@@ -1,9 +1,14 @@
 import React from 'react';
+import ColorCard from './ColorCard';
 
-const ListaColores = () => {
+const ListaColores = (props) => {
     return (
-        <div>
-            
+        <div className="containet-fluid">
+            <div className="row justify-content-start">
+                {
+                    props.listaColores.map((item,posicion)=><ColorCard color={item} key={posicion}></ColorCard>)
+                }
+            </div>
         </div>
     );
 };
