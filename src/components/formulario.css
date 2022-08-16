@@ -1,6 +1,9 @@
 .muestraClass
 {
-    background-color: black;
+    background-color: white;
+    border-color: black;
+    border-style: double;
+    border-width: 3px;
     border-radius: 7px;
     width: 8rem;
     height: 8rem;
