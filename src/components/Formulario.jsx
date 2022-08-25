@@ -1,58 +1,52 @@
-import React, {useState} from "react";
-import './formulario.css';
-import { Form, Button } from 'react-bootstrap';
+import React, { useState } from "react";
+import "./formulario.css";
+import { Form, Button } from "react-bootstrap";
 import ListaColores from "./ListaColores";
 
 const Formulario = () => {
-    const defaultColor = {nombre:'blanco', valor:'#ffffff'};
-
-    const colorNombre = ['blanco','negro','rojo','azul','amarillo','verde','celeste','violeta','gris','naranja'];
-    const colorRGB = ['#ffffff', '#000000', '#ff0000', '#0000ff', '#ffff00', '#00ff00', '#00ffff', '#8000ff', '#808080', '#ff8000'];
-
-    const [colorIngresado, setColorIngresado] = useState(defaultColor);
-    const [isDisabled, setIsDisabled] = useState(true);
+    const [colorIngresado, setColorIngresado] = useState("");
+    const [colorSeleccionado, setColorSeleccionado] = useState("#000000");
     const [listaColores, setListaColores] = useState([]);
 
-    const colorChange = (e)=>{
-        let color = e.target.value;
-        let posicion = colorNombre.indexOf(color);
-        
-        if (posicion !== -1)
-        {
-            setColorIngresado({nombre: color, valor: colorRGB[posicion]});
-            setIsDisabled(false);
-        }
-        else
-        {
-            setIsDisabled(true);
-        }
-    }
-
-    const colorSubmit = (e)=>
-    {
+    const colorSubmit = (e) => {
         e.preventDefault();
-        setListaColores([...listaColores, colorIngresado]);
-        console.log(listaColores);
-    }
+        let nuevo = {};
+        nuevo.nombre = colorIngresado;
+        nuevo.codigo = colorSeleccionado;
+        console.log(nuevo);
+        setListaColores([...listaColores, nuevo]);
+    };
 
     return (
-        <div className="container-fluid pt-4 row">
-            <div style={{backgroundColor: colorIngresado.valor}} className="muestraClass col-4"></div>
-            <Form className="pb-5 col-8" onSubmit={colorSubmit}>
-                <Form.Group className="mb-3" controlId="formColor">
-                    <Form.Label>Ingrese un color</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="ingrese un color"
-                        onChange={(e) => colorChange(e)}
-                    />
-                </Form.Group>
-                <Button disabled={isDisabled} variant="primary" type="submit">
-                    Agregar
-                </Button>
+        <div className="container-fluid pt-4">
+            <Form className="pb-5" onSubmit={colorSubmit}>
+                <div className="row">
+                    <Form.Group className="col-12 col-sm-3 col-md-2">
+                        <Form.Control
+                            value={colorSeleccionado}
+                            className="muestraClass"
+                            type="color"
+                            onChange={(e) => setColorSeleccionado(e.target.value)}
+                        />
+                    </Form.Group>
+                    <div className="col-12 col-sm-9 col-md-10">
+                        <Form.Group className="mb-3" controlId="formColor">
+                            <Form.Label>Ingrese un color</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="ingrese un color"
+                                value={colorIngresado}
+                                onChange={(e) => setColorIngresado(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Button className="col-6 col-sm-3" variant="primary" type="submit">
+                            Agregar
+                        </Button>
+                    </div>
+                </div>
             </Form>
-            <hr/>
-            <ListaColores listaColores={listaColores}/>
+            <hr />
+            <ListaColores listaColores={listaColores} />
         </div>
     );
 };
