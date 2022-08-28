@@ -42,6 +42,10 @@ const Formulario = () => {
     const borrarColor=(color) => {
         console.log("borra color");
         console.log(color);
+        const nuevaLista=listaColores.filter((item)=>{
+            return item.codigo !== color.codigo;
+        })
+        setListaColores(nuevaLista);
     }
 
     return (
