@@ -21,7 +21,6 @@ const Formulario = () => {
         let nuevo = {};
         nuevo.nombre = colorIngresado;
         nuevo.codigo = colorSeleccionado;
-        console.log(listaColores);
         setListaColores([...listaColores, nuevo]);
     };
 
@@ -30,7 +29,6 @@ const Formulario = () => {
 
     useEffect(()=>{
         //cada vez que la lista de colores se actualiza, guardo la nueva lista en el localstorage
-        console.log(listaColores);
         localStorage.setItem("keyTp6ColorList", JSON.stringify(listaColores));
     },[listaColores]);
 
@@ -40,8 +38,6 @@ const Formulario = () => {
     }
 
     const borrarColor=(color) => {
-        console.log("borra color");
-        console.log(color);
         const nuevaLista=listaColores.filter((item)=>{
             return item.codigo !== color.codigo;
         })
