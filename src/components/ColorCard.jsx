@@ -13,7 +13,7 @@ const ColorCard = (props) => {
                     <div className="colorCardClass" style={{backgroundColor: props.color.codigo}}></div>
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-end">
-                    <Button>Borrar</Button>
+                    <Button onClick={()=>props.borrarColor(props.color)}>Borrar</Button>
                 </Card.Footer>
             </Card>
         </div>

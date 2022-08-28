@@ -6,7 +6,7 @@ const ListaColores = (props) => {
         <div className="containet-fluid">
             <div className="row justify-content-start">
                 {
-                    props.listaColores.map((item,posicion)=><ColorCard color={item} key={posicion}></ColorCard>)
+                    props.listaColores.map((item,posicion)=><ColorCard color={item} key={posicion} borrarColor={props.borrarColor}></ColorCard>)
                 }
             </div>
         </div>

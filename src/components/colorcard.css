@@ -8,3 +8,32 @@
     width: 7rem;
     height: 7rem;
 }
+
+
+@media (max-width: 400px) 
+{
+    .colorCardClass 
+    {
+        background-color: red;
+        border-color: red;
+        border-width: 3px;
+        border-radius: 7px;
+        width: 5rem;
+        height: 5rem;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 600px) 
+{
+    .colorCardClass 
+    {
+        background-color: white;
+        border-color: black;
+        border-style: double;
+        border-width: 3px;
+        border-radius: 7px;
+        width: 6rem;
+        height: 6rem;
+    }
+}
+
