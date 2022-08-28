@@ -7,10 +7,6 @@ Permite administrar una paleta de colores.
 
 # Bibliotecas externas
 
-## React Color (color picker)
-
-npm i react-color
-
 ## React Bootstrap
 
 npm i react-bootstrap bootstrap
